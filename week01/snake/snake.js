@@ -6,8 +6,8 @@ const west  = {dx: -1, dy:  0};
 
 let direction = north;
 
-const clockwise = [north, east, south, west, north];
-const countercw = [north, west, south, east, north];
+const clockwise = [north, east, south, west];
+const countercw = [north, west, south, east];
 
 const snake = [
     {x: 10, y: 5},
@@ -22,7 +22,8 @@ function snakeEquals(a, b) {
 }
 
 function changeDirection(orientation) {
-    direction = orientation[orientation.indexOf(direction) + 1];
+    const nextIndex = (orientation.indexOf(direction) + 1) % orientation.length;
+    direction = orientation[nextIndex];
 }
 
 function start() {
